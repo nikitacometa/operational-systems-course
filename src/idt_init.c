@@ -22,6 +22,11 @@ void master_handle(uint64_t handler_id) {
 }
 
 void handle(uint64_t handler_id) {
+    if (handler_id < SYSTEM_INTERRUPTS) {
+        print_string("System interrupt #");
+        print_int(handler_id);
+        print_string(" has been handled!\n");
+    }
     if (MASTER_FIRST_HANDLER <= handler_id && handler_id <= MASTER_LAST_HANDLER) {
         master_handle(handler_id);
     }

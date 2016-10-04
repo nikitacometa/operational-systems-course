@@ -4,6 +4,7 @@
 #include <io_port.h>
 #include <utils.h>
 #include <memory.h>
+#include <ints.h>
 
 
 #define MASTER_FIRST_HANDLER 32
