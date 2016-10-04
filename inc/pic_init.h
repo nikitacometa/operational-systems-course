@@ -4,6 +4,7 @@
 #include <desc.h>
 #include <serial_init.h>
 #include <memory.h>
+#include <io.h>
 
 
 struct desc_table_entry_ptr {
