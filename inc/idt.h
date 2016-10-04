@@ -1,10 +1,10 @@
-#ifndef __IDT_INIT_H__
-#define __IDT_INIT_H__
+#ifndef __IDT_H__
+#define __IDT_H__
 
 #include <stdint.h>
 #include <memory.h>
 #include <io.h>
-#include <pic_init.h>
+#include <pic.h>
 
 
 struct desc_table_ptr {
@@ -46,4 +46,4 @@ struct desc_table_entry_ptr {
 
 void init_idt();
 
-#endif /* __IDT_INIT_H__ */
+#endif /* __IDT_H__ */

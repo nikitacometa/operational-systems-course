@@ -1,4 +1,4 @@
-#include <serial_init.h>
+#include <serial.h>
 
 
 void disable_interrupts() {

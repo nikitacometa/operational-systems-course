@@ -1,4 +1,4 @@
-#include <idt_init.h>
+#include <idt.h>
 
 
 extern uint64_t handlers[]; 

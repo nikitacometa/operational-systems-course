@@ -1,5 +1,5 @@
-#ifndef __PIC_INIT_H__
-#define __PIC_INIT_H__
+#ifndef __PIC_H__
+#define __PIC_H__
 
 #include <io_port.h>
 #include <utils.h>
@@ -15,4 +15,8 @@
 
 void init_pic();
 
-#endif /* __PIC_INIT_H__ */
+void set_master_mask(uint8_t mask);
+
+void set_slave_mask(uint8_t mask);
+
+#endif /* __PIC_H__ */

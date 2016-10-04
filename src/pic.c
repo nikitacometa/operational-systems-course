@@ -1,4 +1,4 @@
-#include <pic_init.h>
+#include <pic.h>
 
 
 void init_pic() {
@@ -14,8 +14,16 @@ void init_pic() {
     out8(SLAVE_DATA_PORT, 2);
     out8(SLAVE_DATA_PORT, BIT(0));
 
-    out8(MASTER_DATA_PORT, 0xFF ^ BIT(2));
-    out8(SLAVE_DATA_PORT, 0xFF);
+    set_master_mask(0xFF ^ BIT(2));
+    set_slave_mask(0xFF);
 
     enable_ints();
+}
+
+void set_master_mask(uint8_t mask) {
+	out8(MASTER_DATA_PORT, mask);
+}
+
+void set_slave_mask(uint8_t mask) {
+	out8(SLAVE_DATA_PORT, mask);
 }
