@@ -1,11 +1,11 @@
-#include <desc.h>
-#include <ints.h>
-#include <ioport.h>
-#include <serial.h>
+#include <serial_init.h>
+#include <pic_init.h>
+
 
 void main(void) {
 	init_serial_port();
 
-	print_to_serial_port("Hello, world!\n");
-	print_to_serial_port("And bye!\n");
+	init_pic();
+
+	__asm__ volatile("int $42");
 }
