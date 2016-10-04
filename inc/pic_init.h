@@ -1,20 +1,15 @@
 #ifndef __PIC_INIT_H__
 #define __PIC_INIT_H__
 
-#include <desc.h>
-#include <serial_init.h>
+#include <io_port.h>
+#include <utils.h>
 #include <memory.h>
-#include <io.h>
 
 
-struct desc_table_entry_ptr {
-	uint16_t offset_0_15;
-	uint16_t segm_sel;
-	uint16_t params;
-	uint16_t offset_16_31;
-	uint32_t offset_32_63;
-	uint32_t reserved;
-} __attribute__((packed));
+#define MASTER_FIRST_HANDLER 32
+#define MASTER_LAST_HANDLER  39
+#define SLAVE_FIRST_HANDLER  40
+#define SLAVE_LAST_HANDLER   47
 
 
 void init_pic();

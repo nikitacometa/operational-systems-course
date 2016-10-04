@@ -5,6 +5,10 @@
 #include <utils.h>
 #include <memory.h>
 
-void print(char *s);
+void print_char(char c);
+
+void print_string(char *s);
+
+void print_int(int num);
 
 #endif /* __IO_H__ */
