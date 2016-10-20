@@ -19,9 +19,5 @@ void main(void) {
 
 	print_memory_map();
 
-	start_timer();
-
-	set_master_mask(0xFF ^ BIT(0));
-	
 	just_hang();
 }

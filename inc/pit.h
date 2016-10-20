@@ -6,6 +6,6 @@
 #include <utils.h>
 
 
-void start_timer();
+void start_timer(void);
 
 #endif

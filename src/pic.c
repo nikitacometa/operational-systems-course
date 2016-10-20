@@ -1,7 +1,7 @@
 #include <pic.h>
 
 
-void init_pic() {
+void init_pic(void) {
 	disable_ints();
 
     out8(MASTER_COMMAND_PORT, BIT(0) | BIT(4));

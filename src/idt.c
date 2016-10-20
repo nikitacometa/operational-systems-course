@@ -46,7 +46,7 @@ void init_entry(int i) {
 	entries[i].reserved = 0;
 }
 
-void init_idt() {
+void init_idt(void) {
 	for (int i = 0; i < ENTRIES_NUMBER; i++) {
 		init_entry(i);
 	}

@@ -44,6 +44,6 @@ struct desc_table_entry_ptr {
 #define SYSTEM_INTERRUPTS 32
 
 
-void init_idt();
+void init_idt(void);
 
 #endif /* __IDT_H__ */
