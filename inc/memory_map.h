@@ -2,14 +2,20 @@
 #define __MEMORY_MAP_H__
 
 #include <stdint.h>
+#include <stddef.h>
+#include <io.h>
+#include <utils.h>
 
+//3.3 https://www.gnu.org/software/grub/manual/multiboot/multiboot.html
 
 struct memory_map_entry {
 	uint32_t size;
 	uint64_t base_addr;
 	uint64_t length;
-	uint64_t type;
-};
+	uint32_t type;
+} __attribute__((packed));
+
+typedef struct memory_map_entry memory_map_entry_t;
 
 void get_memory_map(void);
 
