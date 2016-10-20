@@ -17,8 +17,19 @@ struct memory_map_entry {
 
 typedef struct memory_map_entry memory_map_entry_t;
 
+memory_map_entry_t new_entry(uint32_t size, uint64_t base_addr, uint64_t end_addr, uint32_t type);
+
+
 void get_memory_map(void);
 
 void print_memory_map(void);
+
+
+#define MEMORY_MAP_MAX_SIZE 128
+
+#define TYPE_KERNEL      0
+#define TYPE_AVAILABLE   1
+
+#define ENTRY_SIZE 20
 
 #endif /* __MEMORY_MAP_H__ */
