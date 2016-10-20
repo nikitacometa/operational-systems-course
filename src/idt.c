@@ -5,27 +5,21 @@ extern uint64_t handlers[];
 
 
 void slave_handle(uint64_t handler_id) {
-    print_string("Interrupt #");
-    print_int(handler_id);
-    print_string(" has been handled by slave!\n");
+    printf("Interrupt #%u has been handled by slave!\n", handler_id);
 
     out8(SLAVE_COMMAND_PORT, BIT(5));
     out8(MASTER_COMMAND_PORT, BIT(5));
 }
 
 void master_handle(uint64_t handler_id) {
-    print_string("Interrupt #");
-    print_int(handler_id);
-    print_string(" has been handled by master!\n");
+    printf("Interrupt #%u has been handled by master!\n", handler_id);
 
     out8(MASTER_COMMAND_PORT, BIT(5));
 }
 
 void handle(uint64_t handler_id) {
     if (handler_id < SYSTEM_INTERRUPTS) {
-        print_string("System interrupt #");
-        print_int(handler_id);
-        print_string(" has been handled!\n");
+        printf("System interrupt #%u has been handled somehow!\n", handler_id);
     }
     if (MASTER_FIRST_HANDLER <= handler_id && handler_id <= MASTER_LAST_HANDLER) {
         master_handle(handler_id);

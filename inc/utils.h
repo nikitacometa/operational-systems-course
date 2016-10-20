@@ -39,4 +39,8 @@ static inline void qemu_gdb_hang(void) {
 #endif
 }
 
+static inline void just_hang(void) {
+	while (1);
+}
+
 #endif /* __UTILS_H__ */

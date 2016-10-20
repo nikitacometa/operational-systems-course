@@ -4,6 +4,8 @@
 #include <io.h>
 #include <ints.h>
 #include <pit.h>
+#include <memory_map.h>
+#include <utils.h>
 
 
 void main(void) {
@@ -13,9 +15,13 @@ void main(void) {
 
 	init_pic();
 
+	get_memory_map();
+
+	print_memory_map();
+
 	start_timer();
 
 	set_master_mask(0xFF ^ BIT(0));
-
-	while(1);
+	
+	just_hang();
 }
