@@ -17,4 +17,10 @@ int printf(const char *fmt, ...);
 
 int vprintf(const char *fmt, va_list args);
 
+
+static inline void hang(char* mes) {
+	printf("%s\n", mes);
+	just_hang();
+}
+
 #endif /* __IO_H__ */

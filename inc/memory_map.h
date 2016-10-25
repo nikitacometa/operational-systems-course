@@ -24,11 +24,14 @@ void get_memory_map(void);
 
 void print_memory_map(void);
 
+memory_map_entry_t* get_max_available_region(void);
+
 
 #define MEMORY_MAP_MAX_SIZE 128
 
 #define TYPE_KERNEL      0
 #define TYPE_AVAILABLE   1
+#define TYPE_UNAVAILABLE 2
 
 #define ENTRY_SIZE 20
 

@@ -3,6 +3,8 @@
 extern uint64_t multiboot_info;
 extern uint32_t multiboot_header[];
 
+uint8_t got_memory_map = 0;
+
 size_t memory_map_size = 0;
 memory_map_entry_t memory_map[MEMORY_MAP_MAX_SIZE];
 memory_map_entry_t kernel;
@@ -55,6 +57,9 @@ void sort_entries(void) {
 }
 
 void get_memory_map(void) {
+	if (got_memory_map) {
+		return;
+	}
 	uint32_t flags = *(uint32_t *) multiboot_info;
 	if (!(flags & BIT(6))) {
         printf("No memory map provided.\n");
@@ -78,9 +83,11 @@ void get_memory_map(void) {
     }
 
     sort_entries();
+
+    got_memory_map = 1;
 }
 
-char *region_status(memory_map_entry_t entry) {
+char* region_status(memory_map_entry_t entry) {
 	switch (entry.type) {
 		case TYPE_KERNEL:
 			return "kernel";
@@ -96,4 +103,14 @@ void print_memory_map(void) {
 	for (size_t i = 0; i < memory_map_size; i++) {
 		printf("[%p; %p] %s\n", memory_map[i].base_addr, memory_map[i].base_addr + memory_map[i].length - 1, region_status(memory_map[i]));
 	}
+}
+
+memory_map_entry_t* get_max_available_region(void) {
+	memory_map_entry_t* res = NULL;
+	for (size_t i = 0; i < memory_map_size; i++) {
+		if (memory_map[i].type == TYPE_AVAILABLE && (res == NULL || res->length < memory_map[i].length)) {
+			res = &memory_map[i];
+		}
+	}
+	return res;
 }
