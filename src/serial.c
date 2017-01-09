@@ -1,30 +1,29 @@
 #include <serial.h>
 
 
-void disable_interrupts() {
+void init_serial_port(void) {
 	clear_bit(SERIAL_PORT + 3, 7);
-
 	out8(SERIAL_PORT + 1, 0);
-}
 
-void set_div(int div) {
+	int div = 1;
 	set_bit(SERIAL_PORT + 3, 7);
-
 	out8(SERIAL_PORT, low(div));
 	out8(SERIAL_PORT + 1, high(div));
-}
 
-void set_format() {
 	set_bit(SERIAL_PORT + 3, 0);
 	set_bit(SERIAL_PORT + 3, 1);
-
 	clear_bit(SERIAL_PORT + 3, 2);
 	clear_bit(SERIAL_PORT + 3, 3);
 	clear_bit(SERIAL_PORT + 3, 7);
 }
 
-void init_serial_port() {
-	disable_interrupts();
-	set_div(1);
-	set_format();
+void serial_putchar(char c) {
+	while (!get_bit(SERIAL_PORT + 5, 5));
+	out8(SERIAL_PORT, c);
+}
+
+void serial_write(const char *buf, size_t size) {
+	for (size_t i = 0; i < size; i++) {
+		serial_putchar(buf[i]);
+	}
 }

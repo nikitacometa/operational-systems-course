@@ -13,7 +13,7 @@
 #define SLAVE_LAST_HANDLER   47
 
 
-void init_pic();
+void init_pic(void);
 
 void set_master_mask(uint8_t mask);
 
